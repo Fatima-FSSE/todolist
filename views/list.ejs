@@ -1,16 +1,5 @@
+<%- include("head") -%>
 <%- include("header") -%>
-
-  <div class="help">
-    <button type="button" class="collapse">
-        How to?
-    </button>
-    <div class="helpText">
-      To create a new List write the custome List name in the Url. for example
-      "../home" or "../work". All the lists will be saved in database(MongoDB).
-      Later you can access the list in the same way you created "../home" or 
-      "../work". 
-    </div>
-  </div>
 
   <div class="box" id="heading">
     <h1> <%= listTitle %> </h1>
@@ -32,7 +21,7 @@
     </form>
   </div>
 
-  <script>
+  <!-- <script>
     var btn = document
         .getElementsByClassName("collapse");
       
@@ -46,6 +35,6 @@
         }
     });
       
-  </script>
+  </script> -->
 
 <%- include("footer") -%>

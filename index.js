@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000 ;
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public')); 
 
 const connectDB = async ()=> {
   try{
@@ -116,20 +116,21 @@ app.post("/delete", async (req, res) => {
   }
 });
 
-app.get("/:customListName", async (req, res) => {
+app.get("/Work", async (req, res) => {
   try {
-    const customListName = _.capitalize(req.params.customListName);
-    await List.findOne({name: customListName}).then(function(foundList){
+    //const customListName = _.capitalize(req.params.customListName);
+    await List.findOne({name: "Work"}).then(function(foundList){
       if(foundList === null){
         //create new list
         const list = new List({
-          name: customListName,
+          name: "Work",
           listItems: defaultItems
         });
         list.save();
-        res.redirect("/" + customListName);
+        res.redirect("/Work");
       } else {
           //show existing list and render list.ejs
+          //res.render("list", {listTitle: _.capitalize(foundList.name), newListItems: foundList.listItems});
           res.render("list", {listTitle: foundList.name, newListItems: foundList.listItems});
         }
   });
